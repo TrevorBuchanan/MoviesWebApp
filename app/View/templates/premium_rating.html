@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+     
+{% block app_content %}
+    <h1>Reviews for {{ title }}</h1>
+    <div>
+        <h3> Average Rating Score: {{ average }}</h3>
+        <h3> Totals ratings: {{ reviews | length }} </h3>
+        
+        <span>Recommend to a friend? </span>      
+        <span> <a href="{{ url_for('routes.addToToWatch', title=title)}}"> 
+            Add to watch later? </a> </span>
+        <span> <a href="{{ url_for('routes.addToWatched', title=title)}}"> 
+            Add to watched list? </a> </span>
+        {% if getFriendForm %}
+            <form method="post">
+                {{ getFriendForm.hidden_tag() }}
+                <div>
+                    {{ getFriendForm.friend_username.label(class="form-control-label") }}
+                    {{ getFriendForm.friend_username(class="form-control") }}
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-primary">Send Recommendation</button>
+                </div>
+            </form>
+        {% endif %}
+
+        <h3> Reviews: </h3>
+        {% for review in reviews %}    
+            <table class="review_box", style="overflow-y:scroll", height="100px"> 
+                <tr> 
+                    <td colspan="1">
+                        <strong> Title: {{review.movie_title }} </strong>
+                        <br>
+                        <strong> Rating: {{ review.rating }}</strong>
+                        <p> {{ review.review }}</p>
+                    </td>
+                    <td colspan="2">
+                        <form action="{{url_for('routes.like', post_id = review.id, title = review.movie_title)}}" method = "post">
+                            <input type ="submit" value="Like" class="likebtn">  
+                        </form>
+                        Likes: {{review.likecount}}
+                    </td>
+                </tr>
+                <br>
+            </table>      
+        {% endfor %}
+
+        <p> <a href="{{ url_for('routes.postReview', title=title)}}">  Click here to add a rating and review </a> </p>
+    </div>
+{% endblock %}

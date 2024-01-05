@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <h1> Add Movie </h1>
+
+    {% if movieForm %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ wtf.quick_form(movieForm, action= url_for('routes.postMovie')) }}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

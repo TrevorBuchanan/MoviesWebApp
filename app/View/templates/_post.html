@@ -1,0 +1,20 @@
+<table class = "posttable" style = "width:100%" valign="top">
+    <tr>
+        <td>
+            <div>
+                <td colspan="3">
+                    <a class="movietitle" href="{{ url_for('routes.movieRating', title=movie.title) }}">
+                        <div class="posttitle"> 
+                            <h3>
+                               {{ movie.title }}
+                            </h3>
+                            <p>Rating: {{ movie.average_rating }}</p>            
+                            <p>Genre: {{ movie.genre }}</p>
+                            <div class="posttimestamp"> Added: {{ moment(movie.timestamp).format('LLL') }} </div>
+                        </div>
+                    </a>
+                </td>
+            </div>
+        </td> 
+    </tr>
+</table>

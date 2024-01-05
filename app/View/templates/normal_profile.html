@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Hello {{ current_user.username }}</h1>
+    <h2>Your Reviews:</h2>
+    {% for review in user_reviews %}
+        <table class="review_box", style="overflow-y:scroll", height="100px"> 
+            <tr> 
+                <td colspan="1">
+                    <strong> Title: {{review.movie_title }} </strong>
+                    <br>
+                    <strong> Rating: {{ review.rating }}</strong>
+                    <p> {{ review.review }}</p>
+                    {% if review.member_id == current_user.id %}
+                        <a href="{{ url_for('routes.edit_review', review_id=review.id) }}">Edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+            <br>
+        </table>
+    {% endfor %}
+{% endblock %}
+
