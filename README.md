@@ -8,5 +8,3 @@ Trevor Buchanan
 Matei Vitalaru
 * member 3:
 Calvin
-* member 4:
-Brian
