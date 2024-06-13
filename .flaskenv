@@ -1,2 +1,2 @@
-FLASK_APP=ratings.py
+FLASK_APP=buchanan_trading.py
 FLASK_DEBUG=1

@@ -11,3 +11,4 @@ WTForms-SQLAlchemy==0.3
 email-validator==1.1.2
 pytest==7.4.0
 python-dotenv==0.20.0
+setuptools==69.5.1
